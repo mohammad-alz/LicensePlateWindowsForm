@@ -1,0 +1,37 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="TextBox" x:Key="txtbox">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderThickness="1 1 1 3" BorderBrush="#555"
+                                CornerRadius="7">
+                            <Grid>
+                                <TextBox x:Name="textbox" Background="Transparent" BorderThickness="0" Visibility="Visible"
+                                         Margin="1" Foreground="{TemplateBinding Foreground}" FontSize="{TemplateBinding FontSize}"
+                                         Text="{TemplateBinding Text}" FontFamily="{TemplateBinding FontFamily}"
+                                         VerticalAlignment="Center"/>
+                                <TextBlock x:Name="lable" Background="Transparent"
+                                           FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}"
+                                           Text="Enter file name . . ." Visibility="Collapsed"
+                                           VerticalAlignment="Center" Margin="2 0 0 0" Panel.ZIndex="-1"
+                                           Foreground="#999"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=textbox}" Value="">
+                                <Setter Property="Visibility" Value="Visible" TargetName="lable"/>
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding IsFocused, ElementName=textbox}" Value="True">
+                                <Setter Property="BorderBrush" Value="DodgerBlue" TargetName="border"/>
+                            </DataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+    
+</ResourceDictionary>
